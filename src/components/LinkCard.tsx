@@ -21,7 +21,7 @@ export default function LinkCard({ link }: Props) {
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className="block w-full rounded-xl border-2 border-zinc-900 px-5 py-3 text-center font-medium transition hover:bg-zinc-100"
+      className="block w-full rounded-2xl border border-white/70 bg-white/45 px-6 py-4 text-center text-[15px] font-medium tracking-tight text-slate-700 shadow-[0_6px_24px_-10px_rgba(40,90,150,0.25)] backdrop-blur-md transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/60 hover:shadow-[0_12px_28px_-10px_rgba(40,90,150,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
       {link.title}
     </a>
