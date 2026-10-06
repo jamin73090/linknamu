@@ -12,7 +12,13 @@ export async function getDb() {
   if (!uri) return null;
 
   // 개발 모드의 HMR에서 연결이 계속 늘어나지 않도록 전역에 재사용한다.
-  globalForMongo.mongoClientPromise ??= new MongoClient(uri).connect();
+  // 연결에 실패하면 캐시를 비워 다음 요청에서 다시 연결을 시도한다.
+  globalForMongo.mongoClientPromise ??= new MongoClient(uri)
+    .connect()
+    .catch((error) => {
+      globalForMongo.mongoClientPromise = undefined;
+      throw error;
+    });
   const client = await globalForMongo.mongoClientPromise;
   return client.db(dbName);
 }

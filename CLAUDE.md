@@ -34,7 +34,7 @@ Linktree처럼 여러 링크를 한 페이지에 모아 하나의 URL로 공유�
 - `src/lib/mongodb.ts` — MongoDB 연결, 클릭 수 조회/증가. `MONGODB_URI`가 없으면 DB 없이 동작 (클릭 수 0)
 - `src/app/api/clicks/route.ts` — `GET` 전체 클릭 수, `POST {id}` 클릭 1 증가 (등록된 링크 id만 허용)
 - `src/app/page.tsx` — 메인 페이지 (정적 렌더링)
-- `src/components/` — `ProfileHeader`, `LinkCard` (클릭 시 `sendBeacon`으로 집계, 클릭 수는 화면에 표시하지 않음 — `GET /api/clicks`로 조회)
+- `src/components/` — `ProfileHeader`, `LinkList` (페이지 로드 시 `GET /api/clicks`로 전체 클릭 수를 한 번에 받아옴, 받기 전엔 0회), `LinkCard` (오른쪽에 "N회" 표시, 클릭 시 `sendBeacon`으로 집계하고 화면 값도 즉시 +1)
 - 환경 변수 예시는 `.env.example` 참고
 
 ## 코드 규칙
